@@ -1,0 +1,58 @@
+server:
+  port: 9090
+
+spring:
+  profiles:
+    active: qa
+---
+
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    url: jdbc:mysql://localhost:3306/dempdb
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+welcome:
+  message: hellow develop environment
+
+---
+spring:
+  config:
+    activate:
+      on-profile: qa
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    url: jdbc:mysql://localhost:3306/dempdb_qa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+welcome:
+  message: hellow qa environment
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    url: jdbc:mysql://localhost:3306/dempdb_prod
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+welcome:
+  message: hellow production environment
